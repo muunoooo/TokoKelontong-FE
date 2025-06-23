@@ -29,8 +29,8 @@ Ini adalah aplikasi frontend **Toko Klontong**, sistem manajemen produk berbasis
 1. **Clone repository ini**
 
 ```bash
-git clone https://github.com/username/toko-klontong-frontend.git
-cd toko-klontong-frontend
+git clone https://github.com/muunoooo/TokoKelontong-FE.git
+cd TokoKelontong-FE
 ```
 
 2. **Install dependencies**
@@ -41,14 +41,7 @@ npm install
 
 3. **Atur konfigurasi environment**
 
-Buat file `.env` jika dibutuhkan, atau pastikan base URL backend sudah disetting di `axios` (misalnya `/src/utils/api.ts`):
-
-```ts
-const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000", // Ganti dengan URL backend kamu
-  ...
-});
-```
+base URL backend sudah disetting di `axios`:
 
 4. **Jalankan aplikasi**
 
@@ -66,9 +59,9 @@ http://localhost:5173
 
 ## 👤 Contoh Akun Login
 
-| Email            | Password   |
-|------------------|------------|
-| admin@gmail.com  | admin123   |
+| Email           | Password |
+| --------------- | -------- |
+| admin@gmail.com | admin123 |
 
 > ⚠️ Ini hanya contoh. Kamu bisa mendaftarkan akun baru melalui halaman register.
 
@@ -77,6 +70,7 @@ http://localhost:5173
 ## 📸 Tampilan Antarmuka
 
 ![Login Page](public/login.jpeg)
+
 > Halaman login dengan ilustrasi dan toast notification
 
 ---
