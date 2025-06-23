@@ -16,9 +16,13 @@
         </n-card>
 
         <n-card title="Daftar Produk" class="mb-4">
-          <n-button type="primary" class="mb-4" @click="showAddModal = true">
-            Tambah Produk
-          </n-button>
+          <div class="product-toolbar">
+            <SearchBarDebounce :loading="loading" @search="handleSearch" />
+            <n-button type="primary" @click="showAddModal = true">
+              + Tambah Produk
+            </n-button>
+          </div>
+
           <div v-if="loading">Loading produk...</div>
 
           <!-- LIST MODE -->
@@ -170,6 +174,7 @@ import DeleteConfirmDialog from "@/components/DeleteConfirmDialog.vue";
 import ProductDetailModal from "@/components/ProductDetailModal.vue";
 import AddProductModal from "@/components/AddProductModal.vue";
 import { useMessage } from "naive-ui";
+import SearchBarDebounce from "@/components/SearchBarDebounce.vue";
 const message = useMessage();
 
 const auth = useAuthStore();
@@ -186,6 +191,8 @@ const showEditModal = ref(false);
 const showDeleteModal = ref(false);
 const showDetailModal = ref(false);
 const showAddModal = ref(false);
+
+const searchQuery = ref("");
 
 const fetchProducts = async () => {
   try {
@@ -230,6 +237,22 @@ onMounted(async () => {
   await auth.fetchMe();
   await fetchProducts();
 });
+
+const handleSearch = async (query: string) => {
+  searchQuery.value = query;
+  loading.value = true;
+
+  try {
+    const res = await axios.get("/products", {
+      params: { search: query },
+    });
+    products.value = res.data.data;
+  } catch (err) {
+    console.error("Gagal mencari produk:", err);
+  } finally {
+    loading.value = false;
+  }
+};
 
 const confirmDelete = async () => {
   if (!selectedProduct.value?.id) return;
@@ -359,5 +382,20 @@ const closeDetail = () => {
   font-weight: bold;
   margin: 0.5rem 0;
   color: #d35400;
+}
+.product-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .product-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 </style>
