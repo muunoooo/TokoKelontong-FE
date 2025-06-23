@@ -19,7 +19,7 @@ Ini adalah aplikasi frontend **Toko Klontong**, sistem manajemen produk berbasis
 - Vue 3 + Vite
 - TypeScript
 - Naive UI
-- Pinia (jika digunakan)
+- Pinia 
 - Axios
 
 ---
