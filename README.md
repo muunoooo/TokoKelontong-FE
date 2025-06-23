@@ -83,4 +83,4 @@ http://localhost:5173
 
 ## 📄 Lisensi
 
-Proyek ini dibuat oleh **Windi**. Gunakan dan kembangkan sesuai kebutuhan UMKM kamu.
+Proyek ini dibuat oleh **M Naufal**. Gunakan dan kembangkan sesuai kebutuhan UMKM kamu.
